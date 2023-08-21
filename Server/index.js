@@ -1,10 +1,18 @@
 
-const express = require("express");
-const app = express();
-
+const express = require("express")
 const mongooseConnect = require("./configs/mongoDB.connect");
-// require(".env").config()
+const app = express();
+app.use(express.json())
 
+require("dotenv").config()
+
+const authMiddleware = require("./middlewares/auth.middleware");
+
+const authRouter = require("./routes/auth.routes")
+app.use("/auth", authRouter)
+
+const usersRouter = require("./routes/users.routes");
+app.use("/users", authMiddleware, usersRouter)
 
 app.listen(8000, (err)=>{
     if(err){
