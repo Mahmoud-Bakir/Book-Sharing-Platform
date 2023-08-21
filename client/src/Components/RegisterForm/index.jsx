@@ -6,11 +6,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import logo from "../../assets/logo.png"
 
-const LoginForm = ({handleToggle}) => {
+const RegisterForm = ({handleToggle}) => {
   const navigater = useNavigate();
   const moveToHome = () => navigater("/home");
 
   const defaultState = {
+    first_name:"",
+    last_name:"",
     email: "",
     password: "",
   };
@@ -19,12 +21,12 @@ const LoginForm = ({handleToggle}) => {
     setData({ ...data, [e.target.name]: e.target.value });
     console.log(data);
   };
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     const response = await axios.post(
-      "http://localhost:8000/api/guest/login",
+      "http://localhost:8000/auth/register",
       data
     );
-    window.localStorage.setItem("token", response.data.user.token);
+    window.localStorage.setItem("token", response.data.token);
     window.location.href = "http://localhost:3000/home";
     console.log(response.data.user.token);
   };
@@ -33,6 +35,26 @@ const LoginForm = ({handleToggle}) => {
       <div className="login-form-container">
         <div className="logo-container">
           <img src={logo} alt="" />
+        </div>
+        <div className="part">
+          <Partition
+            Name={"first_name"}
+            Itype={"text"}
+            holder={"please enter your first name"}
+            lab={"First name"}
+            value={data.email}
+            onChange={handleDataChange}
+          />
+        </div>
+        <div className="part">
+          <Partition
+            Name={"last_name"}
+            Itype={"text"}
+            holder={"Please enter your last name "}
+            lab={"Last name"}
+            value={data.password}
+            onChange={handleDataChange}
+          />
         </div>
         <div className="part">
           <Partition
@@ -54,13 +76,13 @@ const LoginForm = ({handleToggle}) => {
             onChange={handleDataChange}
           />
         </div>
-        <Button name={"Log in"} onSubmit={handleLogin} />
+        <Button name={"Register"} onSubmit={handleRegister} />
         <p>
-          Don't have an account?
-          <span onClick={handleToggle}> Sign Up</span>
+          Already have an account?
+          <span onClick={handleToggle}> Sign In</span>
         </p>
      </div> 
     </>
   );
 };
-export default LoginForm;
+export default RegisterForm;

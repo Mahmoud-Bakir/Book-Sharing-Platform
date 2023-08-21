@@ -1,0 +1,16 @@
+.button-register{
+    margin-top: 5%;
+    background-color:#D2763E;;
+    outline:none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    width: 20%;
+    padding: 3%;
+    font-size: large;
+    font-weight: 600;
+}
+.button-register:hover{
+    background-color: #b16637;;
+}
