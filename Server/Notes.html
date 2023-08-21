@@ -1,0 +1,15 @@
+<img src=http://localhost:8000/${test.jpg} alt="">
+
+
+const new_image = Buffer.from(picture, "base64");
+        fs.writeFile(
+            __dirname.replace("controllers", "public/images/") +
+                item_id +
+                ".png",
+            new_image,
+            err => {
+                if (err) {
+                    console.log(err);
+                }
+            }
+        );

@@ -1,8 +1,10 @@
-
 const express = require("express")
+const path = require("path")
 const mongooseConnect = require("./configs/mongoDB.connect");
 const app = express();
 app.use(express.json())
+
+app.use(express.static(path.join(__dirname, "./public")));
 
 require("dotenv").config()
 

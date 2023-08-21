@@ -3,7 +3,11 @@ const booksSchema = new mongoose.Schema({
     name : String,
     author : String,
     image_url : String,
+    genre:String,
     description : String,
+    likes:{
+        type:Number,default:0
+    }
 }, {
     timestamps: true
 })
@@ -18,14 +22,12 @@ const usersSchema = new mongoose.Schema({
     password: String,
     books: [booksSchema],
     followers: [
-        {
-            user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-        }
+
+        { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
     ],
     following: [
-        {
-            user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-        }
+
+        { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
     ],
 }, {
     timestamps: true
