@@ -26,14 +26,18 @@ const register = async(req, res)=>{
     const {password} = req.body
 
     const hashedPassword = await bcrypt.hash(password, 10);
+    const token = jwt.sign({}, process.env.JWT_SECRET)
     const user = new User({
         ...req.body,
         password: hashedPassword
     });
 
+
     user.save()
 
-    res.send(user)
+    res.send({token,
+        user
+    })
 }
 
 const verify = (_, res)=>{

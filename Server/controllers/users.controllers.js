@@ -55,19 +55,20 @@ const followUser = async(req,res) => {
             res.status(500).json({ error: 'An error occurred while following' });
         }
     }
+    const getBooks = async (req, res) => {
+        const id = req.body.user_Id;
+        const user = await User.findById(id);
+        const followings = user.following;
+        const books = [];
+        for (const followingId of followings) {
+            const followingUser = await User.findById(followingId);
+            if (followingUser && followingUser.books) {
+                books.push(...followingUser.books);
+            }
+        }
+    
+        res.send(books);
+    };
+    
 
-// const getFollowers = async (req,res) => {
-//     const user_Id = req.body.user_Id; 
-//     const user = await User.findById(user_Id)
-//      if (!user) {
-//             return res.status(404).json({ error: 'User not found.' });
-//         }
-
-//      const followers = user.followers.map(follower => {
-//         return {
-//               userId: follower.user._id,
-//             };
-//         });
-// }
-
-module.exports = {getAllUsers, getProfile,addBooks,followUser}
+module.exports = {getAllUsers, getProfile,addBooks,followUser,getBooks}

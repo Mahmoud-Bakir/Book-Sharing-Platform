@@ -27,7 +27,7 @@ const RegisterForm = ({handleToggle}) => {
       data
     );
     window.localStorage.setItem("token", response.data.token);
-    window.location.href = "http://localhost:3000/home";
+    moveToHome()
     console.log(response.data.user.token);
   };
   return (

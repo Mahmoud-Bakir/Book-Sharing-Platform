@@ -21,11 +21,11 @@ const LoginForm = ({handleToggle}) => {
   };
   const handleLogin = async () => {
     const response = await axios.post(
-      "http://localhost:8000/api/guest/login",
+      "http://localhost:8000/auth/login",
       data
     );
     window.localStorage.setItem("token", response.data.user.token);
-    window.location.href = "http://localhost:3000/home";
+    moveToHome()
     console.log(response.data.user.token);
   };
   return (
@@ -48,7 +48,7 @@ const LoginForm = ({handleToggle}) => {
           <Partition
             Name={"password"}
             Itype={"password"}
-            holder={"Please enter your Password here"}
+            holder={"Please enter your Password"}
             lab={"Password"}
             value={data.password}
             onChange={handleDataChange}
