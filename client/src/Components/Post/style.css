@@ -4,12 +4,11 @@ body, div, img {
   }
 .post-container{
     width: 30%;
+    height: auto;
     display: flex;
     flex-direction: column;
     margin-left: 40%;
     margin-top: 8%;
-    position: absolute;
-    
 }
 .post-container img{
     max-width: 100%;
@@ -55,6 +54,4 @@ body, div, img {
    font-weight: 500;
    font-size: larger;
    margin-bottom: 50px;
-
-    
 }

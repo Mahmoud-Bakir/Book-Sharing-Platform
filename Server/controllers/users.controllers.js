@@ -56,8 +56,12 @@ const followUser = async(req,res) => {
         }
     }
     const getBooks = async (req, res) => {
-        const id = req.body.user_Id;
+        const id = req.query.user_Id;
         const user = await User.findById(id);
+        if (!user) {
+            return res.status(404).send("User not found");
+        }
+        
         const followings = user.following;
         const books = [];
         for (const followingId of followings) {
@@ -69,6 +73,5 @@ const followUser = async(req,res) => {
     
         res.send(books);
     };
-    
 
 module.exports = {getAllUsers, getProfile,addBooks,followUser,getBooks}

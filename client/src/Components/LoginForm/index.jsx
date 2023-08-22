@@ -24,9 +24,10 @@ const LoginForm = ({handleToggle}) => {
       "http://localhost:8000/auth/login",
       data
     );
-    window.localStorage.setItem("token", response.data.user.token);
-    moveToHome()
+    window.localStorage.setItem("token", response.data.token);
+    window.localStorage.setItem("id", response.data.user._id);
     console.log(response.data.user.token);
+    moveToHome()
   };
   return (
     <>

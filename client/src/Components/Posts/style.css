@@ -1,0 +1,5 @@
+.posts-container{
+    flex: 1;
+    padding-left:auto;
+    position: relative;
+}

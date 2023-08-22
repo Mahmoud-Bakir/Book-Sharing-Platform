@@ -3,18 +3,18 @@ import man from "../../assets/man.jpg"
 import non from "../../assets/heart.svg"
 import love from "../../assets/red.svg"
 import React, { useState } from 'react';
-const Post = ({first_name,last_name,author,description}) =>{
+const Post = ({first_name,last_name,author,description,likes}) =>{
   
     let [image, setImage] = useState(non);
-    let[likes,setLikes] = useState(0)
+    let[likescount,setLikesCount] = useState(0)
 
     const handleToggle = () => {
       if (image == non) {
        setImage(love);
-       setLikes(likes=likes+1)
+       setLikesCount(likescount=likescount+1)
     } else {
       setImage(non);
-      setLikes(likes=likes-1)
+      setLikesCount(likescount=likescount-1)
     }
   };
     return(   <>
@@ -30,7 +30,7 @@ const Post = ({first_name,last_name,author,description}) =>{
               <span>{description}</span>
             </div>
             <div className="post-foot">
-                <img src={image} alt="" onClick={handleToggle}/>
+                <img src={non} alt="" onClick={handleToggle}/>
             </div>
             <span>{likes} likes</span>
         </div>
