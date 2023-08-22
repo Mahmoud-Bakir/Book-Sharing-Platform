@@ -13,7 +13,7 @@ const Posts = ({books}) => {
                     last_name="test"
                     author={book.author}
                     description={book.description}
-                    image={book.image}
+                    image_url={`data:image/jpeg;base64,${book.image_url}`} 
                     likes={book.likes}
                 />
             ))}  
