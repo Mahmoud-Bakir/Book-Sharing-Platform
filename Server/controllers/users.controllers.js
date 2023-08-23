@@ -56,7 +56,34 @@ const followUser = async(req,res) => {
             res.status(500).json({ error: 'An error occurred while following' });
         }
     }
-    const getFeedBooks = async (req, res) => {
+ const unfollowUser = async (req, res) => {
+        const user1 = req.body.user_id;
+        const user2 = req.body.follower_id;
+        
+        try {
+          const updatedUser1 = await User.findByIdAndUpdate(
+            user1,
+            { $pull: { following: { _id: user2 } } }, // Use $pull to remove the follower
+            { new: true }
+          );
+          const updatedUser2 = await User.findByIdAndUpdate(
+            user2,
+            { $pull: { followers: { _id: user1 } } }, // Use $pull to remove the user from followers
+            { new: true }
+          );
+          
+          updatedUser1.toJSON();
+          updatedUser2.toJSON();
+          
+          res.send({
+            user1: updatedUser1,
+            user2: updatedUser2
+          });
+        } catch (error) {
+          res.status(500).json({ error: 'An error occurred while unfollowing' });
+        }
+      };
+const getFeedBooks = async (req, res) => {
         const id = req.query.user_Id;
         const user = await User.findById(id);
         if (!user) {
@@ -75,4 +102,4 @@ const followUser = async(req,res) => {
         res.send(books);
     };
 
-module.exports = {getAllUsers, getProfile,addBooks,followUser,getFeedBooks}
+module.exports = {getAllUsers, getProfile,addBooks,followUser,getFeedBooks,unfollowUser}
