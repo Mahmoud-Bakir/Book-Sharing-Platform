@@ -13,12 +13,12 @@ const getProfile = async (req, res)=>{
 }
 
 const addBooks = async (req, res) => {
-    const user_Id = req.body.user_Id; 
-    const { name, author, image_url, description } = req.body;
+    const user_id = req.body.user_id; 
+    const { name, author, image_url, description,first_name,last_name } = req.body;
     try {
         const updatedUser = await User.findByIdAndUpdate(
-            user_Id,
-            { $push: { books: { name, author, image_url, description } } },
+            user_id,
+            { $push: { books: { name, author, image_url, description,first_name,last_name,user_id} } },
             { new: true }
         );
         const {password, ...userInfo} = updatedUser.toJSON();
@@ -63,12 +63,12 @@ const followUser = async(req,res) => {
         try {
           const updatedUser1 = await User.findByIdAndUpdate(
             user1,
-            { $pull: { following: { _id: user2 } } }, // Use $pull to remove the follower
+            { $pull: { following:  user2  } },
             { new: true }
           );
           const updatedUser2 = await User.findByIdAndUpdate(
             user2,
-            { $pull: { followers: { _id: user1 } } }, // Use $pull to remove the user from followers
+            { $pull: { followers:   user1  } }, 
             { new: true }
           );
           
@@ -102,4 +102,25 @@ const getFeedBooks = async (req, res) => {
         res.send(books);
     };
 
-module.exports = {getAllUsers, getProfile,addBooks,followUser,getFeedBooks,unfollowUser}
+const likePost = async (req, res) => {
+        const user_id = req.body.user_id; 
+        const book_id = req.body.book_id;
+    
+        try {
+            const user = await User.findById(user_id);
+            const test = user.books.find(book => book._id = book_id);
+            console.log(test);
+
+            if (!test) {
+                return res.status(404).json({ message: "Book not found" });
+            }
+            test.likes += 1;
+            await user.save();
+            res.json({ message: "Liked successfully", newLikesCount: test.likes });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: "Error occurred while liking" });
+        }
+    };
+
+module.exports = {getAllUsers, getProfile,addBooks,followUser,getFeedBooks,unfollowUser,likePost}
