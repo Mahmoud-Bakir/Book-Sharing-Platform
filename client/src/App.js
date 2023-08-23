@@ -3,6 +3,7 @@ import Authentication from "./Pages/Authentication";
 import HomePage from "./Pages/HomePage";
 import AddPost from "./Pages/AddPost";
 import ProfilePage from "./Pages/ProfilePage";
+import SearchPage from "./Pages/SearchPage";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Route path="/home" element={<HomePage/>}/>
       <Route path="/addPost" element={<AddPost/>}/>
       <Route path="/profile" element={<ProfilePage/>}/>
+      <Route path="/search" element={<SearchPage/>}/>
     </Routes> 
   );
 }

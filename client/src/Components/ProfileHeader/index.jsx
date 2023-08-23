@@ -28,16 +28,11 @@ const ProfileHeader = () => {
   };
   useEffect(() => {
     async function getUser() {
-      try{
       const response = await axios.get("http://127.0.0.1:8000/users/profile",{headers,params})
       const data = response.data
-      
       setUser(data)
-      }catch(e){
-        console.log(e)
-      }
   }
-  getUser()},[])
+  getUser()},[user])
 
   return (
     <>
@@ -45,23 +40,34 @@ const ProfileHeader = () => {
         <div className="profile-image">
           <img src={profile} alt="" />
         </div>
-        <div className="details-container"> 
-        <div className="profile-details">
-          <span>{user.first_name} {user.last_name}</span>
-          </div>  
-          <div className="profile-details">
-            <span>Posts : {user.books.length}</span>
-            <span>Followers : {user.followers.length} </span>
-            <span>Following : {user.following.length} </span>
-          </div>
-          <div className="profile-details">
-            <button className="button-profile" onClick={handleLogout}>
-              Sign out
-            </button>
-          </div>
+        <div className="details-container">
+          {user ? (
+            <>
+              <div className="profile-details">
+                <span>{user.first_name} {user.last_name}</span>
+              </div>
+              <div className="profile-details">
+                {user.books && (
+                  <span>Posts : {user.books.length}</span>
+                )}
+                {user.followers && (
+                  <span>Followers : {user.followers.length} </span>
+                )}
+                {user.following && (
+                  <span>Following : {user.following.length} </span>
+                )}
+              </div>
+              <div className="profile-details">
+                <button className="button-profile" onClick={handleLogout}>
+                  Sign out
+                </button>
+              </div>
+            </>
+          ) : (
+            <p>Loading user profile...</p>
+          )}
         </div>
       </div>
     </>
-  );
-};
-export default ProfileHeader;
+    )}
+  export default ProfileHeader

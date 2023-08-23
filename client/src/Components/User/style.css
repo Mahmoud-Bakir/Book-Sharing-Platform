@@ -1,0 +1,32 @@
+
+.user-container{
+    margin-left:40% ;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 25%;
+    height: 50px;
+    padding: 1rem 2rem;
+    background-color: #3a3a3a;
+    border-radius: 10px;
+}
+.user-container-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+}
+.user-container-img img{
+   max-width: 50%;
+   max-height: 50%;
+}
+.user-container span{
+    color: white;
+    font-size: x-large;
+}
+.details{
+    justify-self: center;
+    align-self: center;
+}
+

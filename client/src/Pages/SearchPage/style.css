@@ -1,0 +1,6 @@
+.users-container{
+    padding: 5rem 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}

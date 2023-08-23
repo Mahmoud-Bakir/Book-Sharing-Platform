@@ -13,6 +13,7 @@ const SideMenu = () =>{
   const moveToProfile = () => navigater('/profile')
   const moveToHome = () => navigater('/home')
   const moveToForm = () => navigater('/addPost')
+  const moveToSearch = () => navigater('/search')
 
     
 
@@ -27,7 +28,7 @@ const SideMenu = () =>{
                 <img src={home} alt="home" />
                 <span>Home</span>
             </div>
-            <div className="side-menu-subtitle">
+            <div className="side-menu-subtitle" onClick={moveToSearch}>
                 <img src={search} alt="search" />
                 <span>Search</span>
             </div>

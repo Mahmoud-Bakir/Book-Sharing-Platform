@@ -26,10 +26,19 @@ const HomePage = () => {
         getBooks()},[])
     return (
         <>
-           <SideMenu/>
+          <SideMenu />
+          {books.length === 0 ? (
+          <div className="posts-container">
+             <p>Follow users to fill your feed.</p>
+          </div>
+         
+          ) : (
            <div className="posts-container">
-            <Posts books={books}/>
+             <Posts books={books} />
            </div>
+)}
+
+           
            
        </>
     );
