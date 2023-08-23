@@ -1,6 +1,14 @@
 .posts-container{
+  color: black;
   display: flex;
   flex-direction: column;
   width: 100%;
   position: relative;
+}
+.not-found{
+  color: rgb(107, 107, 107);
+  font-size: xx-large;
+  margin-left: 650px;
+  margin-top: 350px;
+
 }

@@ -33,7 +33,25 @@ const User = ({ first_name, last_name, check, id, follow,handleFollow }) => {
         console.log(e)
       }
      
-  }  
+  }else{
+    try{
+
+      const response = await axios.post(
+        'http://127.0.0.1:8000/users/unfollow',
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+    )
+    setFollowing(!following);
+    console.log(response.data)
+    }catch(e){
+      console.log(e)
+    }
+
+  }
   };
 
   return (

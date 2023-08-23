@@ -10,6 +10,9 @@ import "../PostForm/style.css"
 const PostForm = () => {
   const token = localStorage.getItem('token');
   const id = localStorage.getItem('id');
+  const first_name = localStorage.getItem('first_name');
+  const last_name = localStorage.getItem('last_name');
+
   const navigater = useNavigate();
   const moveToHome = () => navigater('/home');
 
@@ -20,6 +23,8 @@ const PostForm = () => {
     description: "",
     likes: 0,
     user_Id: id,
+    first_name:first_name,
+    last_name:last_name
   };
   const [data, setData] = useState(defaultState);
 
@@ -47,7 +52,7 @@ const PostForm = () => {
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json', // Add this header
+            'Content-Type': 'application/json',
           },
         }
       );

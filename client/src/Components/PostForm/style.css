@@ -42,10 +42,10 @@
 .get span{
     font-size: larger;
 }
-p{
-    font-size:large;
-    font-weight: 400;
-    color: rgb(255, 255, 255);
+.not-fount{
+    font-size: xx-large;
+    color: bisque;
+    padding-left: 500px;
 }
 .get a{
     text-align: center;

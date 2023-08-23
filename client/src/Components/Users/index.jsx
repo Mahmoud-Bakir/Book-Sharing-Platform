@@ -47,19 +47,25 @@ const Users = () => {
     getUsers(); 
   }, []);
 
-    return (
-      <>
-        {Object.keys(users).map((user_Id, index) => (
-          <User
-            key={index}
-            id={users[user_Id]._id}
-            first_name={users[user_Id].first_name}
-            last_name={users[user_Id].last_name}
-            follow={following_list.includes(users[user_Id]._id) ? true : false}
-            check={checkUserProfile} 
-          />
-        ))}
-      </>
+  return (
+    <>
+      {Object.keys(users).map((user_Id, index) => {
+        // Exclude the signed-in user from the list
+        if (users[user_Id]._id !== id) {
+          return (
+            <User
+              key={index}
+              id={users[user_Id]._id}
+              first_name={users[user_Id].first_name}
+              last_name={users[user_Id].last_name}
+              follow={following_list.includes(users[user_Id]._id) ? true : false}
+              check={checkUserProfile} 
+            />
+          );
+        }
+        return null;
+      })}
+    </>
   );
 };
 

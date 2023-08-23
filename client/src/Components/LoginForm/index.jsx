@@ -26,6 +26,8 @@ const LoginForm = ({handleToggle}) => {
     );
     window.localStorage.setItem("token", response.data.token);
     window.localStorage.setItem("id", response.data.user._id);
+    window.localStorage.setItem("first_name", response.data.user.first_name);
+    window.localStorage.setItem("last_name", response.data.user.last_name);
     console.log(response.data.user.token);
     moveToHome()
   };
@@ -56,7 +58,7 @@ const LoginForm = ({handleToggle}) => {
           />
         </div>
         <Button name={"Log in"} onSubmit={handleLogin} />
-        <p>
+        <p className="footer-text">
           Don't have an account?
           <span onClick={handleToggle}> Sign Up</span>
         </p>

@@ -9,8 +9,8 @@ const Posts = ({books}) => {
              {books.map((book, index) => (
                 <Post
                     key={index}
-                    first_name="test"
-                    last_name="test"
+                    first_name={book.first_name}
+                    last_name={book.last_name}
                     author={book.author}
                     description={book.description}
                     image_url={`data:image/jpeg;base64,${book.image_url}`} 

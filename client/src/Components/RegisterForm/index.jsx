@@ -77,7 +77,7 @@ const RegisterForm = ({handleToggle}) => {
           />
         </div>
         <Button name={"Register"} onSubmit={handleRegister} />
-        <p>
+        <p  className="footer-text"> 
           Already have an account?
           <span onClick={handleToggle}> Sign In</span>
         </p>
