@@ -32,7 +32,8 @@ const addBooks = async (req, res) => {
 const followUser = async(req,res) => {
         const user1 = req.body.user_id
         const user2 = req.body.follower_id
-        console
+        const check1 = await User.findById(user1)
+        if (check1.following.includes(user2)) return res.status(450).send("already Followed");
         try {
             const updatedUser1 = await User.findByIdAndUpdate(
                 user1,
