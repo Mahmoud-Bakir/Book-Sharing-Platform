@@ -27,13 +27,6 @@
     color: white;
     font-size: xx-large;
 }
-.logo-container img{
-    padding-bottom: 20px;
-    max-width: 100%;
-    max-height:100%;
-    border-radius: 30px;
-    scale: 5;
-}
 .get{
     margin-top: 1%;
     margin-left: auto;

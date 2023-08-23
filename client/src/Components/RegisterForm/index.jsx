@@ -33,7 +33,7 @@ const RegisterForm = ({handleToggle}) => {
   return (
     <>
       <div className="login-form-container">
-        <div className="logo-container">
+        <div className="logo-container-form">
           <img src={logo} alt="" />
         </div>
         <div className="part">

@@ -6,8 +6,8 @@ const getAllUsers = async (req, res)=>{
 }
 
 const getProfile = async (req, res)=>{
-    console.log(req.body)
-    const user = await User.findById(req.body.id)
+    const user_Id = req.query.user_Id
+    const user = await User.findById(user_Id)
     res.send(user)
  
 }
@@ -55,7 +55,7 @@ const followUser = async(req,res) => {
             res.status(500).json({ error: 'An error occurred while following' });
         }
     }
-    const getBooks = async (req, res) => {
+    const getFeedBooks = async (req, res) => {
         const id = req.query.user_Id;
         const user = await User.findById(id);
         if (!user) {
@@ -74,4 +74,4 @@ const followUser = async(req,res) => {
         res.send(books);
     };
 
-module.exports = {getAllUsers, getProfile,addBooks,followUser,getBooks}
+module.exports = {getAllUsers, getProfile,addBooks,followUser,getFeedBooks}

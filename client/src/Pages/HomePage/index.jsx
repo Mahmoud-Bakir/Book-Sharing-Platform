@@ -11,7 +11,7 @@ const HomePage = () => {
         useEffect(() => {
         
           async function getBooks() {
-          const response = await axios.get('http://127.0.0.1:8000/users/books', {
+          const response = await axios.get('http://127.0.0.1:8000/users/feed_books', {
             params: {
                 user_Id:id
             },
