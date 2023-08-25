@@ -4,6 +4,21 @@ const getAllUsers = async (req, res)=>{
     const users = await User.find();
     res.send(users)
 }
+const getAllBooks = async (req, res)=>{
+    try {
+        const users = await User.find();
+        const allBooks = users.reduce((books, user) => {
+          return books.concat(user.books); 
+        }, []);
+    
+        res.json(allBooks);
+        console.log(allBooks)
+      } catch (error) {
+        console.error('Error fetching all books:', error);
+        res.status(500).json({ error: 'An error occurred while fetching all books.' });
+      }
+}
+
 const getUserBooks = async (req, res)=>{
     const user_Id = req.query.user_Id
     const user = await User.findById(user_Id);
@@ -128,5 +143,35 @@ const likePost = async (req, res) => {
             res.status(500).json({ message: "Error occurred while liking" });
         }
     };
-
-module.exports = {getAllUsers, getProfile,addBooks,followUser,getFeedBooks,unfollowUser,likePost,getUserBooks}
+const searchBooks = async (req, res) => {
+    try {
+      const { input, bookIds } = req.body;
+  
+      const searchQuery = { $or: [] };
+  
+      for (const keyword of input.split(' ')) {
+        searchQuery.$or.push(
+          { title: new RegExp(keyword, 'i') },
+          { author: new RegExp(keyword, 'i') },
+          { description: new RegExp(keyword, 'i') }
+        );
+      }
+  
+      const results = await Book.find({
+        $and: [
+          { _id: { $in: bookIds.map(id => mongoose.Types.ObjectId(id)) } },
+          { $or: searchQuery.$or },
+        ],
+      });
+  
+      res.json(results);
+    } catch (error) {
+      console.error('Error searching:', error);
+      res.status(500).json({ error: 'An error occurred while searching.' });
+    }
+      
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
+module.exports = {getAllUsers, getProfile,addBooks,followUser,getFeedBooks,unfollowUser,likePost,getUserBooks,getAllBooks,searchBooks}

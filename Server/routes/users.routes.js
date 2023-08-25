@@ -10,6 +10,7 @@ router.post("/unfollow", usersController.unfollowUser)
 router.post("/like", usersController.likePost)
 router.get("/feed_books", usersController.getFeedBooks)
 router.get("/user_books", usersController.getUserBooks)
+router.get("/books", usersController.getAllBooks)
 
 
 module.exports = router;
