@@ -34,7 +34,7 @@ const HomePage = () => {
          
           ) : (
            <div className="posts-container">
-             <Posts books={books} />
+             <Posts books={books} profile={false} />
            </div>
 )}
 

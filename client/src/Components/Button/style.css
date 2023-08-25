@@ -1,5 +1,5 @@
 .button-register{
-    background-color:#b16637;;
+    background-color:#e96310;;
     outline:none;
     border: none;
     border-radius: 10px;
@@ -9,7 +9,8 @@
     padding: 3%;
     font-size: large;
     font-weight: 600;
+    margin-top: 10px;
 }
 .button-register:hover{
-    background-color: #b16637;;
+    background-color: #ca560e;;
 }

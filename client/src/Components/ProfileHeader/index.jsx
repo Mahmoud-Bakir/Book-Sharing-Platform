@@ -38,7 +38,9 @@ const ProfileHeader = ({user}) => {
                 <button className="button-profile" onClick={handleLogout}>
                   Sign out
                 </button>
+                
               </div>
+              
             </>
           ) : (
             <p>Loading user profile...</p>

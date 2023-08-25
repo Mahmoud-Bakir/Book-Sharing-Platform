@@ -22,7 +22,7 @@ const PostForm = () => {
     image_url: "", 
     description: "",
     likes: 0,
-    user_Id: id,
+    user_id: id,
     first_name:first_name,
     last_name:last_name
   };
@@ -109,7 +109,7 @@ const PostForm = () => {
             onChange={handleImageChange}
           />
         </div>
-        <Button name={"Add"} onSubmit={handleAddBook} />
+        <Button className="button-register" name={"Add"} onSubmit={handleAddBook} />
      </div> 
     </>
   );

@@ -11,7 +11,7 @@
     margin-bottom: 1%;
     box-sizing: border-box;
     background-color: #3a3a3a;
-    gap: 20px;
+    gap: 10px;
 }
 .logo-container-form{
     margin-bottom: 5%;
@@ -27,31 +27,9 @@
     border-radius: 30px;
     scale: 1.5;
 }
-.get{
-    margin-top: 1%;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    width: 23%;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1%;
-    box-sizing: border-box;
-    gap: 14px;
-}
-.get span{
-    font-size: larger;
-}
 
-.get a{
-    text-align: center;
-    color:#385185;
-    text-decoration: none;
-    font-size: large;
-    font-weight: 600;
-}
 span{
-    color: #D2763E;
+    color: #e96310;
     cursor: pointer;
 }
 .footer-text{

@@ -57,7 +57,7 @@ const LoginForm = ({handleToggle}) => {
             onChange={handleDataChange}
           />
         </div>
-        <Button name={"Log in"} onSubmit={handleLogin} />
+        <Button className="button-register" name={"Log in"} onSubmit={handleLogin} />
         <p className="footer-text">
           Don't have an account?
           <span onClick={handleToggle}> Sign Up</span>

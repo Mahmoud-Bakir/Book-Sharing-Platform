@@ -1,4 +1,3 @@
-import "../LoginForm/style.css";
 import Partition from "../Partition";
 import Button from "../Button";
 import { useState } from "react";
@@ -27,6 +26,9 @@ const RegisterForm = ({handleToggle}) => {
       data
     );
     window.localStorage.setItem("token", response.data.token);
+    window.localStorage.setItem("id", response.data.user._id);
+    window.localStorage.setItem("first_name", response.data.user.first_name);
+    window.localStorage.setItem("last_name", response.data.user.last_name);
     moveToHome()
     console.log(response.data.user.token);
   };
@@ -76,7 +78,7 @@ const RegisterForm = ({handleToggle}) => {
             onChange={handleDataChange}
           />
         </div>
-        <Button name={"Register"} onSubmit={handleRegister} />
+        <Button className="button-register" name={"Register"} onSubmit={handleRegister} />
         <p  className="footer-text"> 
           Already have an account?
           <span onClick={handleToggle}> Sign In</span>
