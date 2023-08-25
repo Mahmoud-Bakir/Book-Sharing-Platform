@@ -1,9 +1,9 @@
 import React from 'react'
-import "../SearchPage/style.css"
+import "./style.css"
 import Users from '../../Components/Users'
 import SideMenu from '../../Components/SideMenu'
 
-const SearchPage = () => {
+const UsersPage = () => {
   return (
     <>
      <SideMenu/>
@@ -15,4 +15,4 @@ const SearchPage = () => {
   )
 }
 
-export default SearchPage
+export default UsersPage

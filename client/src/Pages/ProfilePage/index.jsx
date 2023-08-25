@@ -63,7 +63,7 @@ const ProfilePage = ({ test }) => {
       
       {books.length === 0 ? (
         <div className="posts-container">
-          <p className="not-found">Click on Create to add your first Post</p>
+          <p className="not-found">Loading . . .</p>
         </div>
       ) : (
         <div className="profile-posts-container">

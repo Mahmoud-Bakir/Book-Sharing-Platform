@@ -1,7 +1,8 @@
 import "../SideMenu/style.css"
 import logo from "../../assets/logo.png"
 import home from "../../assets/feed.svg" 
-import search from "../../assets/search.svg" 
+import searching from "../../assets/search.svg"
+import books from "../../assets/books.svg" 
 import profile from "../../assets/profile.svg" 
 import create from "../../assets/create.svg" 
 import { useNavigate } from "react-router-dom";
@@ -13,7 +14,8 @@ const SideMenu = () =>{
   const moveToProfile = () => navigater('/profile')
   const moveToHome = () => navigater('/home')
   const moveToForm = () => navigater('/addPost')
-  const moveToSearch = () => navigater('/search')
+  const moveToUsers = () => navigater('/users')
+  const search = () => navigater('/search')
 
     
 
@@ -28,9 +30,13 @@ const SideMenu = () =>{
                 <img src={home} alt="home" />
                 <span>Home</span>
             </div>
-            <div className="side-menu-subtitle" onClick={moveToSearch}>
-                <img src={search} alt="search" />
-                <span>Search</span>
+            <div className="side-menu-subtitle" onClick={moveToUsers}>
+                <img src={searching} alt="search" />
+                <span>Search Users</span>
+            </div>
+            <div className="side-menu-subtitle" onClick={search}>
+                <img src={books} alt="search" />
+                <span>Search Books</span>
             </div>
             <div className="side-menu-subtitle" onClick={moveToForm}>
                 <img src={create} alt="create" />

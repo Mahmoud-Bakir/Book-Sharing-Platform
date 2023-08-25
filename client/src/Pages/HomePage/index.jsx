@@ -29,7 +29,7 @@ const HomePage = () => {
           <SideMenu />
           {books.length === 0 ? (
           <div className="posts-container">
-             <p className="not-found">Follow users to fill your feed !</p>
+             <p className="not-found">Loading . . .</p>
           </div>
          
           ) : (
