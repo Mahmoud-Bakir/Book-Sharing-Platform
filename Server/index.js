@@ -1,8 +1,12 @@
 const express = require("express")
+const bodyParser = require("body-parser");
 const cors = require('cors');
 const path = require("path")
 const mongooseConnect = require("./configs/mongoDB.connect");
 const app = express();
+
+app.use(bodyParser.json({ limit: "20mb" }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "20mb" }));
 
 const corsOptions = {
     origin: 'http://localhost:3000', 

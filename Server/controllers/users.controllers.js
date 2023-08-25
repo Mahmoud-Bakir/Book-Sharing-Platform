@@ -4,7 +4,13 @@ const getAllUsers = async (req, res)=>{
     const users = await User.find();
     res.send(users)
 }
-
+const getUserBooks = async (req, res)=>{
+    const user_Id = req.query.user_Id
+    const user = await User.findById(user_Id);
+    const books = user.books
+    console.log(user)
+    res.send(books)
+}
 const getProfile = async (req, res)=>{
     const user_Id = req.query.user_Id
     const user = await User.findById(user_Id)
@@ -123,4 +129,4 @@ const likePost = async (req, res) => {
         }
     };
 
-module.exports = {getAllUsers, getProfile,addBooks,followUser,getFeedBooks,unfollowUser,likePost}
+module.exports = {getAllUsers, getProfile,addBooks,followUser,getFeedBooks,unfollowUser,likePost,getUserBooks}
